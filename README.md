@@ -16,7 +16,7 @@ If I have an idea of some new feature for the app I will try to add it in each a
 1. some sort of auth (for the very least some indicator the user voted)
 
 # Framework ideas
-- [ ] react + node (with tRpc, Prisma, Jotai)
+- [X] react + node (with tRpc, Prisma, Jotai)
 - [ ] NextJs (with tRpc, prisma)
 - [ ] Solid + node (with Prisma)
 - [ ] Fresh
