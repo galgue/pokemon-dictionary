@@ -23,3 +23,6 @@ If I have an idea of some new feature for the app I will try to add it in each a
 - [ ] Hugo
 - [ ] Remix
 - [ ] Astro
+
+# thanks!
+## [pokeapi](https://pokeapi.co/) or the data!! such a great site!
