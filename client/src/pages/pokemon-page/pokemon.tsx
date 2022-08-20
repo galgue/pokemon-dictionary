@@ -28,12 +28,33 @@ export const PokemonPage = () => {
                     className="w-full h-fit"
                 />
             </div>
-            <div className="flex-1 rounded-lg border-2 border-solid border-poke-yellow h-full p-5">
+            <div className="flex-1 rounded-lg border-2 border-solid border-poke-yellow h-full px-10 py-5 flex flex-col gap-2">
                 <div className="text-4xl capitalize font-bold">{data.name}</div>
                 <div>
                     <ul>
                         <li>Height: {data.height}cm</li>
                         <li>Weight: {data.weight}kg</li>
+                        <li>species: {data.species.name}</li>
+                        <li>
+                            Abilities:
+                            <ul>
+                                {data.abilities.map((ability) => (
+                                    <li className="pl-8 capitalize">
+                                        {ability.name}
+                                    </li>
+                                ))}
+                            </ul>
+                        </li>
+                        <li>
+                            Types:
+                            <ul>
+                                {data.types.map((type) => (
+                                    <li className="pl-8 capitalize">
+                                        {type.name}
+                                    </li>
+                                ))}
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
