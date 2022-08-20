@@ -2,3 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    body {
+        @apply text-poke-yellow bg-poke-blue
+    }
+    #root {
+        @apply h-screen w-screen
+    }
+}

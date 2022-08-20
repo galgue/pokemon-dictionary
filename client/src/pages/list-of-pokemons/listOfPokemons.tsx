@@ -1,13 +1,12 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useTransition } from 'react';
 import { trpc } from 'utils/trpc';
-import { RightArrow, LeftArrow } from './../../icons';
+import { RightArrow, LeftArrow, LoadingIcon } from './../../icons';
+import { Pokemon } from './pokemon';
 
-const Pokemon = ({ name, image }: { name: string; image: string }) => {
+const PokemonSkeleton = () => {
     return (
-        <div className="w-1/5 flex flex-col items-center">
-            <img src={image} alt={name} className="" />
-            <h3>{name}</h3>
+        <div className="w-1/5 flex flex-col items-center min-w-[150px]">
+            <LoadingIcon className="w-full h-fit" />
         </div>
     );
 };
@@ -23,27 +22,51 @@ export const ListOfPokemonsPage = () => {
     ]);
 
     if (isLoading) {
-        return <>loding</>;
+        return (
+            <div className="flex flex-row justify-center items-center h-full">
+                <div className="w-5/6 flex flex-wrap flex-row items-center justify-center">
+                    <PokemonSkeleton />
+                    <PokemonSkeleton />
+                    <PokemonSkeleton />
+                    <PokemonSkeleton />
+                    <PokemonSkeleton />
+                    <PokemonSkeleton />
+                    <PokemonSkeleton />
+                    <PokemonSkeleton />
+                    <PokemonSkeleton />
+                    <PokemonSkeleton />
+                </div>
+            </div>
+        );
     }
 
     if (isError || !data) {
         return <>error</>;
     }
+
     return (
-        <div className="flex flex-row justify-center items-stretch h-full">
-            <LeftArrow
-                className="w-24"
-                onClick={() => setPage((current) => current + 1)}
-            />
-            <div className="flex flex-wrap flex-row">
+        <div className="flex flex-row justify-center items-center h-full">
+            <div className="flex justify-center items-center">
+                <LeftArrow
+                    className={`w-24 cursor-pointer ${
+                        page === 0 ? 'invisible' : ''
+                    }`}
+                    onClick={() => setPage((current) => current - 1)}
+                />
+            </div>
+            <div className="w-5/6 flex flex-wrap flex-row items-center justify-center">
                 {data.pokemons.map(({ image, name, id }) => (
-                    <Pokemon name={name} image={image} key={id} />
+                    <Pokemon name={name} image={image} key={id} id={id} />
                 ))}
             </div>
-            <RightArrow
-                className="w-24"
-                onClick={() => setPage((current) => current - 1)}
-            />
+            <div className="flex justify-center items-center">
+                <RightArrow
+                    className={`w-24 cursor-pointer ${
+                        data.lastPage ? 'invisible' : ''
+                    }`}
+                    onClick={() => setPage((current) => current + 1)}
+                />
+            </div>
         </div>
     );
 };

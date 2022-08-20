@@ -9,6 +9,7 @@ export const pokemonRouter = trpcRouter()
         async resolve({ input, ctx }) {
             return await ctx.prisma.pokemon.findUnique({
                 where: { id: input.id },
+                include: { abilities: true, species: true, types: true },
             });
         },
     })

@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { trpc } from './utils/trpc';
 import { ListOfPokemonsPage } from 'pages/list-of-pokemons';
+import { Topbar } from 'layouts/topbar';
 
 function App() {
     const [queryClient] = useState(() => new QueryClient());
@@ -16,10 +17,12 @@ function App() {
     return (
         <trpc.Provider client={trpcClient} queryClient={queryClient}>
             <QueryClientProvider client={queryClient}>
-                <Routes>
-                    <Route path="/:id" element={<PokemonPage />} />
-                    <Route path="/" element={<ListOfPokemonsPage />} />
-                </Routes>
+                <Topbar>
+                    <Routes>
+                        <Route path="/:id" element={<PokemonPage />} />
+                        <Route path="/" element={<ListOfPokemonsPage />} />
+                    </Routes>
+                </Topbar>
             </QueryClientProvider>
         </trpc.Provider>
     );
