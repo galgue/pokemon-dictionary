@@ -1,3 +1,4 @@
+import { LoadingIcon } from 'icons';
 import { useParams } from 'react-router-dom';
 import { trpc } from 'utils/trpc';
 
@@ -12,11 +13,19 @@ export const PokemonPage = () => {
     ]);
 
     if (isLoading) {
-        return <>loding</>;
+        return (
+            <div className="h-full w-full flex items-center justify-center">
+                <LoadingIcon className="h-3/4 w-auto" />
+            </div>
+        );
     }
 
     if (isError || !data) {
-        return <>error</>;
+        return (
+            <div className="h-full w-full flex items-center justify-center text-9xl">
+                server error
+            </div>
+        );
     }
 
     return (
