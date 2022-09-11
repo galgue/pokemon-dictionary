@@ -9,6 +9,7 @@ module.exports = {
                 'poke-yellow-dark': '#B3A125',
                 'poke-red': '#FF0000',
                 'poke-red-dark': '#CC0000',
+                'poke-light-blue': '#97befc',
             },
         },
     },

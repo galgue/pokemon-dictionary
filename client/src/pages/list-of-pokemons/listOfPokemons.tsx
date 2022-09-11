@@ -1,8 +1,12 @@
 import { DebouncedInput } from 'components/DebouncedInput';
+import { PropsWithChildren } from 'react';
 import { RightArrow, LeftArrow, LoadingIcon } from './../../icons';
 import { LoadingPokemons } from './LoadingPokemons';
 import { Pokemon } from './pokemon';
 import { usePokemonTable } from './usePokemonTable';
+
+const listLayout = 'w-5/6 flex flex-wrap flex-row items-center justify-center';
+const listContainer = 'flex flex-row justify-center items-center h-full';
 
 export const ListOfPokemonsPage = () => {
     const { data, isLoading, isError, pagination, filters } = usePokemonTable();
@@ -11,8 +15,8 @@ export const ListOfPokemonsPage = () => {
 
     if (isLoading) {
         return (
-            <div className="flex flex-row justify-center items-center h-full">
-                <div className="w-5/6 flex flex-wrap flex-row items-center justify-center">
+            <div className={listContainer}>
+                <div className={listLayout}>
                     <LoadingPokemons />
                 </div>
             </div>
@@ -29,11 +33,11 @@ export const ListOfPokemonsPage = () => {
                 type="text"
                 name="search"
                 id="search"
-                className="text-poke-blue font-bold px-2 py-1"
+                className="text-poke-blue font-bold px-2 py-1 bg-poke-light-blue rounded-md"
                 value={'' as string}
                 onChange={(value) => setFilterName(value)}
             />
-            <div className="flex flex-row justify-center items-center h-full">
+            <div className={listContainer}>
                 <div className="flex justify-center items-center">
                     <LeftArrow
                         className={`w-24 cursor-pointer ${
@@ -42,7 +46,7 @@ export const ListOfPokemonsPage = () => {
                         onClick={pagination.prevPage}
                     />
                 </div>
-                <div className="w-5/6 flex flex-wrap flex-row items-center justify-center">
+                <div className={listLayout}>
                     {data.map(({ image, name, id }) => (
                         <Pokemon name={name} image={image} key={id} id={id} />
                     ))}

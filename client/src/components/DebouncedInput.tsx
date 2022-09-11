@@ -6,7 +6,7 @@ export function DebouncedInput<T extends string | number>({
     debounce = 500,
     ...props
 }: {
-    value: T;
+    value?: T;
     onChange: (value: T) => void;
     debounce?: number;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'>) {
