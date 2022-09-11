@@ -23,7 +23,9 @@ export const Pokemon = ({
             <img
                 src={image}
                 alt={name}
-                className={`w-full ${isLoaded ? '' : 'invisible h-0'}`}
+                className={`w-full ${
+                    isLoaded ? '' : 'invisible h-0'
+                } hover:animate-bounce`}
                 onLoad={() => setIsLoaded(true)}
             />
             <div className="capitalize font-semibold -mt-5 text-lg">{name}</div>

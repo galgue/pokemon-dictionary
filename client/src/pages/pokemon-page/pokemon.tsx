@@ -20,7 +20,7 @@ export const PokemonPage = () => {
     }
 
     return (
-        <div className="h-full w-full flex items-center justify-center p-40">
+        <div className="h-full w-full flex items-center justify-center">
             <div className="w-1/3">
                 <img
                     src={data.image}
@@ -28,7 +28,7 @@ export const PokemonPage = () => {
                     className="w-full h-fit"
                 />
             </div>
-            <div className="flex-1 rounded-lg border-2 border-solid border-poke-yellow h-full px-10 py-5 flex flex-col gap-2">
+            <div className="rounded-lg border-2 border-solid border-poke-yellow h-1/2 w-1/3 px-10 py-5 flex flex-col gap-2">
                 <div className="text-4xl capitalize font-bold">{data.name}</div>
                 <div>
                     <ul>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export const Topbar = ({ children }: React.PropsWithChildren) => {
+export const Main = ({ children }: React.PropsWithChildren) => {
     const navigate = useNavigate();
     return (
         <div className="flex flex-col w-full h-full">
