@@ -29,7 +29,7 @@ if (process.env.NODE_ENV !== 'production') global.prisma = prisma;
 const createContext = ({
     req,
     res,
-}: trpcExpress.CreateExpressContextOptions) => ({ prisma }); // no context
+}: trpcExpress.CreateExpressContextOptions) => ({ prisma }); // <-- add `prisma` to context
 
 export type Context = trpc.inferAsyncReturnType<typeof createContext>;
 

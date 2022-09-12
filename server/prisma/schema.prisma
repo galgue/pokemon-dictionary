@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,33 +8,33 @@ datasource db {
 }
 
 model Pokemon {
-  id        Int       @id
+  id        Int       @id @default(autoincrement())
   height    Int
   image     String
   name      String
   weight    Int
   speciesId Int
   species   Species   @relation(fields: [speciesId], references: [id])
-  types     Type[]
   abilities Ability[]
+  types     Type[]
 }
 
 model Type {
-  id       Int       @id
+  id       Int       @id @default(autoincrement())
   name     String
   image    String
   pokemons Pokemon[]
 }
 
 model Ability {
-  id       Int       @id
+  id       Int       @id @default(autoincrement())
   name     String
   image    String
   pokemons Pokemon[]
 }
 
 model Species {
-  id       Int       @id
+  id       Int       @id @default(autoincrement())
   name     String
   image    String
   pokemons Pokemon[]
