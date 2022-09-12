@@ -1,4 +1,11 @@
+import { createSignal } from 'solid-js';
+import { DebouncedInput } from '../../components/DebouncedInput';
+
+const listLayout = 'w-5/6 flex flex-wrap flex-row items-center justify-center';
+const listContainer = 'flex flex-row justify-center items-center h-full';
+
 export const PokemonList = () => {
+    const [input, setInput] = createSignal('');
     return (
         <div class="flex flex-col justify-center items-center h-full pt-10">
             <DebouncedInput
@@ -7,7 +14,7 @@ export const PokemonList = () => {
                 id="search"
                 class="text-poke-blue font-bold px-2 py-1 bg-poke-light-blue rounded-md"
                 value={'' as string}
-                onChange={(value) => setFilterName(value)}
+                onChange={(value) => setInput(value)}
             />
             <div class={listContainer}>
                 <div class="flex justify-center items-center">
