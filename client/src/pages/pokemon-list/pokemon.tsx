@@ -1,6 +1,36 @@
-import { createSignal } from 'solid-js';
-import { CgSearchLoading as LoadingIcon } from 'solid-icons/cg';
+import { createSignal, Switch, Match } from 'solid-js';
 import { Link } from '@solidjs/router';
+import { HeartFullIcon, HeartNotFullIcon, Loading } from '../../icons';
+import { useFavoritePokemon } from '../../stores/useFavoritePokemon';
+
+const Like = ({ id }: { id: number }) => {
+    const { favoritePokemons, toggleFavoritePokemon } = useFavoritePokemon();
+
+    return (
+        <Switch>
+            <Match when={favoritePokemons().has(id)}>
+                <HeartFullIcon
+                    class="fill-poke-red w-5"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        toggleFavoritePokemon(id);
+                    }}
+                />{' '}
+            </Match>
+            <Match when={!favoritePokemons().has(id)}>
+                <HeartNotFullIcon
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        toggleFavoritePokemon(id);
+                    }}
+                    class="fill-poke-red w-5"
+                />
+            </Match>
+        </Switch>
+    );
+};
 
 export const Pokemon = ({
     name,
@@ -18,7 +48,7 @@ export const Pokemon = ({
             href={`/${id}`}
             class="w-1/5 flex flex-col items-center min-w-[150px]"
         >
-            {!isLoaded && <LoadingIcon class="w-full h-fit animate-pulse" />}
+            {!isLoaded() && <Loading class="w-full h-fit animate-pulse" />}
             <img
                 src={image}
                 alt={name}
@@ -29,6 +59,7 @@ export const Pokemon = ({
             />
             <div class="flex flex-row capitalize font-semibold -mt-5 text-lg gap-2">
                 <div>{name}</div>
+                <Like id={id} />
             </div>
         </Link>
     );
