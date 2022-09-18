@@ -18,7 +18,7 @@ If I have an idea of some new feature for the app I will try to add it in each a
 # Framework ideas
 - [X] react + node (with tRpc, Prisma, Jotai)
 - [ ] NextJs (with tRpc, prisma)
-- [ ] Solid + node (with Prisma)
+- [X] Solid + node (with Prisma)
 - [ ] Fresh
 - [ ] Hugo
 - [ ] Remix
